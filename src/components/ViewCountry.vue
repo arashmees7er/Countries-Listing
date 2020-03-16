@@ -46,9 +46,7 @@
             <div class="font-weight-bold my-auto pr-4">Border Countries:</div>
             <div v-show="_.isEmpty(borders)">N/A</div>
             <div v-for="(item, idx) in borders" :key="idx">
-              <div class="py-1 px-2 mr-2 border rounded font-size-sm">
-                {{ _.get(item, 'name') }}
-              </div>
+              <el-button class="mr-2 mt-2" @click="goToBorder(item.name)">{{ _.get(item, 'name') }}</el-button>
             </div>
           </div>
         </div>
@@ -66,8 +64,14 @@ export default {
       borders: [],
     }
   },
-  mounted() {
-    this.getCountryDetails()
+  watch: {
+    '$route.query.name': {
+      handler: function() {
+        this.borders = []
+        this.getCountryDetails()
+      },
+      immediate: true,
+    },
   },
   computed: {
     splitLanguages() {
@@ -92,7 +96,7 @@ export default {
       this.loading = true
       try {
         const { data } = await this.$axios({
-          url: `https://restcountries.eu/rest/v2/name/${this.$route.query.name}`,
+          url: `https://restcountries.eu/rest/v2/name/${this.$route.query.name}?fullText=true`,
           method: 'GET',
         })
         this.countryData = _.first(data)
@@ -101,6 +105,9 @@ export default {
         })
         this.loading = false
       } catch (error) {}
+    },
+    async goToBorder(name) {
+      this.$router.push({ path: '/view', query: Object.assign({}, this.$route.query, { name: name }) })
     },
   },
 }
