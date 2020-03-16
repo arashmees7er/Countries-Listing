@@ -1,11 +1,11 @@
 <template>
   <div class="container layout">
     <div class="mb-4">
-      <el-button class="shadow-sm" @click="$router.push('/')"><i class="fas fa-arrow-left pr-2"></i>Back</el-button>
+      <el-button class="shadow-sm" @click="goBack"><i class="fas fa-arrow-left pr-2"></i>Back</el-button>
     </div>
     <div class="row no-gutters pt-4 d-flex align-items-center justify-content-between">
-      <div class="col-md-5 mr-md-4">
-        <el-image :src="_.get(countryData, 'flag')" fit="fill"></el-image>
+      <div class="col-md-5 mr-md-4" v-loading="loading">
+        <el-image :src="_.get(countryData, 'flag')" fit="fill" v-if="!loading"></el-image>
       </div>
       <div class="col pl-md-4">
         <div class="h4 font-weight-bold mb-4">
@@ -44,6 +44,7 @@
           </div>
           <div class="col-12 mt-4 row no-gutters">
             <div class="font-weight-bold my-auto pr-4">Border Countries:</div>
+            <div v-show="_.isEmpty(borders)">N/A</div>
             <div v-for="(item, idx) in borders" :key="idx">
               <div class="py-1 px-2 mr-2 border rounded font-size-sm">
                 {{ _.get(item, 'name') }}
@@ -75,6 +76,9 @@ export default {
     },
   },
   methods: {
+    goBack() {
+      this.$router.push('/')
+    },
     async getBorder(code) {
       try {
         const { data } = await this.$axios({

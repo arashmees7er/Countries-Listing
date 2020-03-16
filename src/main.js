@@ -38,10 +38,9 @@ Vue.config.productionTip = false;
 Vue.prototype._ = _;
 Vue.prototype.$axios = axios;
 
-/* eslint-disable no-new */
-new Vue({
+Vue.component("app", App);
+
+const app = new Vue({
   el: "#app",
-  router,
-  components: { App },
-  template: "<App/>"
+  router
 });

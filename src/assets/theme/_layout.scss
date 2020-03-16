@@ -1,10 +1,9 @@
 body {
   font-family: $font-family-base;
-  // background: $white;
   font-size: 14px;
   line-height: 2;
   font-weight: 300;
-  // color: $white;
+  overflow: auto !important;
 }
 
 .dark {
@@ -23,6 +22,33 @@ body {
 
   .card {
     background-color: $dark-blue;
+  }
+
+  .el-input .el-input__inner,
+  .el-button,
+  .el-select-dropdown,
+  .el-select-dropdown__item {
+    background-color: $dark-blue;
+    border: none;
+    color: $white;
+  }
+
+  .el-select-dropdown__item {
+    &.selected {
+      background-color: $dark-blue-bg;
+    }
+  }
+
+  .el-popper .popper__arrow {
+    border-bottom-color: $dark-blue;
+  }
+
+  .el-popper .popper__arrow::after {
+    border-bottom-color: $dark-blue;
+  }
+
+  .el-loading-mask {
+    background-color: rgba($dark-blue, 0.7);
   }
 }
 
@@ -47,23 +73,3 @@ h6,
   margin-top: 2em;
   margin-bottom: 2em;
 }
-
-// .layout-section {
-//   margin: 0 0.75rem;
-
-//   @include media-breakpoint-up(md) {
-//     margin: 0 2rem;
-//   }
-
-//   @include media-breakpoint-up(lg) {
-//     margin: 0 3rem;
-//   }
-
-//   @include media-breakpoint-up(xxl) {
-//     margin: 0 3.5rem;
-//   }
-
-//   @include media-breakpoint-up(ul) {
-//     margin: 0 4.5rem;
-//   }
-// }

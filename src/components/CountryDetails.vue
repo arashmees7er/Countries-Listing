@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-3 my-3">
-    <div class="card cursor-pointer h-100" @click="goToDetails">
-      <el-image class="flag" :src="_.get(country, 'flag')" fit="cover"></el-image>
+    <div class="card cursor-pointer h-100 rounded" @click="goToDetails">
+      <el-image class="flag rounded-top" :src="_.get(country, 'flag')" fit="cover"></el-image>
       <div class="card-body">
         <div class="card-title h5 font-weight-bold h6 mb-2">{{ _.get(country, 'name') || 'N/A' }}</div>
         <div class="card-text">

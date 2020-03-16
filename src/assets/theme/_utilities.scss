@@ -2,6 +2,10 @@
 @each $prop, $value in $font-sizes {
   .font-size-#{$prop} {
     font-size: $value;
+
+    @include media-breakpoint-down(md) {
+      font-size: 0.75rem;
+    }
   }
 }
 

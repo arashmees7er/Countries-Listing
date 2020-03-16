@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
+  <div>
     <div class="bg-nav shadow-sm">
-      <div class="container d-flex align-text-center justify-content-between">
-        <div class="h5 font-weight-bold">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="font-size-lg font-weight-bold">
           Where In The World ?
         </div>
         <div>
-          <el-button :type="!darkMode ? 'text' : 'primary'" :class="{ 'text-dark': !darkMode }" @click="toggleMode"
+          <el-button size="mini" :type="!darkMode ? 'text' : 'primary'" :class="{ 'text-dark': !darkMode }" @click="toggleMode"
             ><i class="far fa-moon mr-2"></i> Dark Mode
           </el-button>
         </div>
