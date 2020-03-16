@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-nav shadow-sm">
+    <div class="bg-nav shadow fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
         <div class="font-size-lg font-weight-bold">
           Where In The World ?
