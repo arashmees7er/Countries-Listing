@@ -1,0 +1,10 @@
+// Fonts
+@each $prop, $value in $font-sizes {
+  .font-size-#{$prop} {
+    font-size: $value;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
